@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detail Informasi</title>
+    <link rel="stylesheet" href="stylee.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Detail Informasi Pendaftar</h1>
+      <div class="info-box">
+        <table>
+          <tr>
+            <th>Nama</th>
+            <td id="displayName"></td>
+          </tr>
+          <tr>
+            <th>Email</th>
+            <td id="displayEmail"></td>
+          </tr>
+          <tr>
+            <th>Nomor Telepon</th>
+            <td id="displayPhone"></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <script>
+      // Fungsi untuk mendapatkan parameter dari query string
+      function getQueryParams() {
+        const params = new URLSearchParams(window.location.search);
+        return {
+          name: params.get("name"),
+          email: params.get("email"),
+          phone: params.get("phone"),
+        };
+      }
+
+      // Memasukkan data ke dalam tabel
+      function displayInfo() {
+        const queryParams = getQueryParams();
+        document.getElementById("displayName").textContent =
+          queryParams.name || "Nama tidak tersedia";
+        document.getElementById("displayEmail").textContent =
+          queryParams.email || "Email tidak tersedia";
+        document.getElementById("displayPhone").textContent =
+          queryParams.phone || "Nomor telepon tidak tersedia";
+      }
+
+      // Memanggil fungsi untuk menampilkan informasi
+      displayInfo();
+    </script>
+  </body>
+</html>
